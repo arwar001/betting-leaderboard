@@ -1,32 +1,30 @@
-import leaderbordLogo from "/leaderboard.png";
+import leaderboardLogo from "/leaderboard.png";
 import "./App.css";
 import { useEffect, useState } from "react";
-import { fetchCustomers } from "./requests";
-import type { DatabaseCustomer } from "./types";
+import { fetchLeaderboard } from "./requests";
+import type { CustomerStats } from "./types";
+import CountrySelect from "./components/countrySelect/CountrySelect.tsx";
+import Leaderboard from "./components/leaderboard/Leaderboard.tsx";
 
 function App() {
-  const [customers, setCustomers] = useState<DatabaseCustomer[]>([]);
+  const [customers, setCustomers] = useState<CustomerStats[]>([]);
+  const [country, setCountry] = useState('All');
 
-  async function init() {
-    setCustomers(await fetchCustomers());
+  async function fetchStats() {
+    const data = await fetchLeaderboard(country);
+    setCustomers(data);
   }
 
   useEffect(() => {
-    init();
-  }, []);
+    fetchStats();
+  }, [country]);
 
   return (
     <>
-      <div>
-        <img src={leaderbordLogo} className="logo" alt="Leaderboard logo" />
-      </div>
+      <img src={leaderboardLogo} className="logo" alt="Leaderboard logo"/>
       <h1>Betting Leaderboard</h1>
-      <p>Replace this list of customers with an actual leaderboard of customers...</p>
-      <div>
-      {customers.map(c => (
-        <p>{c.first_name} {c.last_name}</p>
-      ))}
-      </div>
+      <CountrySelect country={country} onCountryChange={setCountry}/>
+      <Leaderboard customers={customers}/>
     </>
   );
 }

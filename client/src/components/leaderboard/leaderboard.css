@@ -1,0 +1,15 @@
+.customer-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+.customer-table th {
+    padding: 8px;
+    border: 1px solid #ddd;
+}
+
+.customer-table td {
+    padding: 8px;
+    border: 1px solid #ddd;
+}

@@ -1,9 +1,15 @@
 import { Router } from 'express';
-import { getCustomers } from './db/queries/customer';
+import { getCustomerStats } from './db/queries/customer';
 
 export const router = Router();
 
-router.get('/customers', async (req, res) => {
-    const customers = await getCustomers();
-    res.json(customers);
+router.get('/customers/leaderboard', async (req, res) => {
+    const {country} = req.query;
+
+    try {
+        const customerStats = await getCustomerStats(country as string);
+        res.json(customerStats);
+    } catch (error) {
+        console.error(error);
+    }
 });

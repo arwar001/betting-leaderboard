@@ -20,3 +20,9 @@ export interface DatabaseBet {
     created_at: Date;
     updated_at: Date;
 }
+
+export interface CustomerStats extends DatabaseCustomer {
+    total_bets: number;
+    win_percentage: number;
+    profit: number;
+}
