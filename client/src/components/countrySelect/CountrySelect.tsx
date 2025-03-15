@@ -16,7 +16,7 @@ const CountrySelect: React.FC<CountrySelectProps> = ({country, onCountryChange})
       <select id="countries" value={country}
               onChange={(e) => onCountryChange(e.target.value)} className="dropdown-select">
         {options.map((option) =>
-          <option value={option} className="dropdown-option">{option}</option>)
+          <option key={option} value={option} className="dropdown-option">{option}</option>)
         }
       </select>
     </>
