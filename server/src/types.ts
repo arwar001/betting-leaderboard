@@ -1,4 +1,4 @@
-type CustomerCountry = 'Estonia' | 'Finland' | 'Norway' | 'Chile' | 'Canada';
+export type CustomerCountry = 'Estonia' | 'Finland' | 'Norway' | 'Chile' | 'Canada';
 
 export interface DatabaseCustomer {
     id: string;

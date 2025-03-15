@@ -11,13 +11,13 @@ const Leaderboard: React.FC<CustomerTableProps> = ({customers}) => {
     <div>
       <table className="customer-table">
         <thead>
-        <tr>
-          <th>Full Name</th>
-          <th>Country</th>
-          <th>Total Bets</th>
-          <th>Win Percentage</th>
-          <th>Profit</th>
-        </tr>
+          <tr>
+            <th>Full Name</th>
+            <th>Country</th>
+            <th>Total Bets</th>
+            <th>Win Percentage</th>
+            <th>Profit</th>
+          </tr>
         </thead>
         <tbody>
         {customers.map((customer) => (

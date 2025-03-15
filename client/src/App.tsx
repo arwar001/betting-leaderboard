@@ -10,13 +10,13 @@ function App() {
   const [customers, setCustomers] = useState<CustomerStats[]>([]);
   const [country, setCountry] = useState('All');
 
-  async function fetchStats() {
+  async function init() {
     const data = await fetchLeaderboard(country);
     setCustomers(data);
   }
 
   useEffect(() => {
-    fetchStats();
+    init();
   }, [country]);
 
   return (
